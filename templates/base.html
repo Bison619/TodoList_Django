@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+</head>
+
+
+<style>
+    .navbar {
+        background-color: #343a40;
+        /* Dark background color */
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        /* Increase font size for the brand */
+    }
+
+    .navbar-toggler-icon {
+        background-color: #fff;
+        /* Change toggler icon color */
+    }
+
+    .navbar-nav .nav-link {
+        color: #fff;
+        /* Set text color for the links */
+        margin-right: 15px;
+        /* Add spacing between the links */
+        transition: color 0.3s;
+        /* Smooth transition on link color change */
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #28a745;
+        /* Change link color on hover */
+    }
+
+    .navbar-collapse {
+        justify-content: flex-end;
+        /* Align menu items to the right */
+    }
+
+    .form-control {
+        border: 1px solid #28a745;
+        /* Add a border to the search input */
+        margin-right: 15px;
+        /* Add spacing between the input and button */
+    }
+
+    .btn-outline-success {
+        border-color: #28a745;
+        /* Set border color for the search button */
+        color: #28a745;
+        /* Set text color for the search button */
+        transition: background-color 0.3s, color 0.3s;
+        /* Smooth transition on button color change */
+    }
+
+    .btn-outline-success:hover {
+        background-color: #28a745;
+        /* Change button background color on hover */
+        color: #fff;
+        /* Change button text color on hover */
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .footer-logo img {
+        max-width: 100px;
+        /* Adjust the size of your logo */
+    }
+
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    .footer-links a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .footer-contact {
+        max-width: 300px;
+        /* Adjust based on your content */
+    }
+
+    .footer-bottom {
+        margin-top: 20px;
+        text-align: center;
+    }
+</style>
+{% block css %}
+<style>
+
+</style>
+{% endblock %}
+
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Todo-List</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"><b>Home</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tasks</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- navbar end  -->
+    {% block body %} {% endblock %}<br>
+    <!-- footer  -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <!-- Your logo or site name goes here -->
+                <img src="..." alt="Your Logo">
+            </div>
+
+            <div class="footer-links">
+                <!-- Navigation links or important links -->
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Tasks</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <!-- Contact information -->
+                <p>Contact us: info@example.com</p>
+                <p>123 Main Street, Cityville</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <!-- Additional information or copyright notice -->
+            <p>&copy; 2024 Your Website. All rights reserved. | Designed by Aman</p>
+        </div>
+    </footer>
+    <!-- footer end  -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+
+
+</body>
+
+</html>
