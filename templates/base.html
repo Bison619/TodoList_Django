@@ -21,63 +21,20 @@
 
 
 <style>
-    .navbar {
-        background-color: #343a40;
-        /* Dark background color */
+    .navbar{
+        background-color: #414242;
+        position: sticky;
+        top: 0;
+        height: 75px;
+        display: flex;
+        align-items: center;
+
     }
 
-    .navbar-brand {
-        font-size: 1.5rem;
-        /* Increase font size for the brand */
+     .navbar-nav li {
+        margin-right: 30px;
+        font-size: 2rex ;
     }
-
-    .navbar-toggler-icon {
-        background-color: #fff;
-        /* Change toggler icon color */
-    }
-
-    .navbar-nav .nav-link {
-        color: #fff;
-        /* Set text color for the links */
-        margin-right: 15px;
-        /* Add spacing between the links */
-        transition: color 0.3s;
-        /* Smooth transition on link color change */
-    }
-
-    .navbar-nav .nav-link:hover {
-        color: #28a745;
-        /* Change link color on hover */
-    }
-
-    .navbar-collapse {
-        justify-content: flex-end;
-        /* Align menu items to the right */
-    }
-
-    .form-control {
-        border: 1px solid #28a745;
-        /* Add a border to the search input */
-        margin-right: 15px;
-        /* Add spacing between the input and button */
-    }
-
-    .btn-outline-success {
-        border-color: #28a745;
-        /* Set border color for the search button */
-        color: #28a745;
-        /* Set text color for the search button */
-        transition: background-color 0.3s, color 0.3s;
-        /* Smooth transition on button color change */
-    }
-
-    .btn-outline-success:hover {
-        background-color: #28a745;
-        /* Change button background color on hover */
-        color: #fff;
-        /* Change button text color on hover */
-    }
-
     footer {
         background-color: #333;
         color: #fff;
@@ -129,26 +86,25 @@
 {% endblock %}
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="index.php" style="font-size: 50px; font-family: 'Brush Script MT'; color: #fff; padding-left: 10px; padding-right: 60px;">Justdo-It</a>
 
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Todo-List</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"><b>Home</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Tasks</a>
-                    </li>
-                </ul>
-            </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a style="color: #fff;" class="nav-link" >Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #fff;" class="nav-link" >Add Task</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #fff;" class="nav-link" >Settings</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -201,3 +157,4 @@
 </body>
 
 </html>
+
