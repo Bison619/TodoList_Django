@@ -12,7 +12,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans">
+        <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
     <title>{% block title %} {% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <!-- Link Swiper's CSS -->
@@ -21,6 +21,9 @@
 
 
 <style>
+    body {
+    font-family: 'Caveat';
+    }
     .navbar{
         background-color: #414242;
         position: sticky;
@@ -28,12 +31,13 @@
         height: 75px;
         display: flex;
         align-items: center;
+        z-index: 100;
 
     }
 
      .navbar-nav li {
         margin-right: 30px;
-        font-size: 2rex ;
+        font-size: 2.5rex ;
     }
     footer {
         background-color: #333;
@@ -87,7 +91,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="index.php" style="font-size: 50px; font-family: 'Brush Script MT'; color: #fff; padding-left: 10px; padding-right: 60px;">Justdo-It</a>
+        <a class="navbar-brand" href="index.php" style="font-size: 50px; color: #fff; padding-left: 10px; padding-right: 60px;"><b>Justdo-It</b></a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -2,7 +2,116 @@
 
 {%block title%} Home {%endblock%}
 
-{%block css%}  {%endblock%}
-{% block body %}
+{%block css%}
+<style>
+    .todolist-form {
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        top: 5px;
+    }
 
+    .todolist-form .overlap-group-wrapper {
+        background-color: #ffffff;
+        width: 1320px;
+        height: 784px;
+    }
+
+    .todolist-form .overlap-group {
+        position: relative;
+        height: 708px;
+    }
+
+    .todolist-form .color {
+        position: absolute;
+        width: 1320px;
+        height: 184px;
+        top: 0;
+        left: 0;
+        background-color: #32fc52;
+        border-radius: 25px 25px 0px 0px;
+    }
+
+    .todolist-form .text-wrapper {
+        position: absolute;
+        top: 5px;
+        left: 481px;
+        text-shadow: 0px 4px 10px #00000040;
+        font-family: "Caveat-Bold", Helvetica;
+        font-weight: 700;
+        color: #000000;
+        font-size: 100px;
+        letter-spacing: 0;
+        line-height: normal;
+    }
+
+    .todolist-form .main {
+        position: absolute;
+        width: 1252px;
+        height: 576px;
+        top: 132px;
+        left: 34px;
+        background-color: #ffffff;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0px 4px 50px #00000040;
+    }
+
+    .todolist-form .div {
+        position: absolute;
+        top: 249px;
+        left: 319px;
+        font-family: "Caveat-Bold", Helvetica;
+        font-weight: 700;
+        color: #666666;
+        font-size: 60px;
+        letter-spacing: 0;
+        line-height: normal;
+    }
+
+    .todolist-form .btn {
+        all: unset;
+        box-sizing: border-box;
+        position: absolute;
+        width: 420px;
+        height: 65px;
+        top: 493px;
+        left: 416px;
+        background-color: #32fc52;
+        border-radius: 50px;
+        overflow: hidden;
+        box-shadow: 0px 4px 10px #00000040;
+    }
+
+    .todolist-form .text-wrapper-2 {
+        position: absolute;
+        top: 1px;
+        left: 125px;
+        font-family: "Caveat-Bold", Helvetica;
+        font-weight: 700;
+        color: #ffffff;
+        font-size: 50px;
+        letter-spacing: 0;
+        line-height: normal;
+    }
+</style>
+{%endblock%}
+
+{% block body %}
+<div class="todolist-form">
+    <div class="overlap-group-wrapper">
+        <div class="overlap-group">
+            <div class="color"></div>
+            <div class="text-wrapper">To-Do List</div>
+            <div class="main">
+                <p class="div">Its empty add some to the list</p>
+                <button class="btn">
+                    <div class="text-wrapper-2">Add tasks</div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
