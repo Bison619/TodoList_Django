@@ -6,67 +6,115 @@
 {% block css %}
 
 <style>
-    .container {
-    width: 40%;
-    border: 1.5px solid white;
-    box-shadow: 0px 0px 15px rgba(108, 134, 247, 1);
-    border-radius: 25px;
-    padding: 20px;
-    position: relative;
-    background: rgba(255, 255, 255, 0.8);
-}
+     .btn-primary {
+        background-color: #1e2c3a;
+        color: #fff;
+        font-size: 25px;
+        border-radius: 25px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
 
-.bg-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('{% static "bg.png" %}');
-    background-size: cover;
-    background-position: center;
-    border-radius: 25px;
-    opacity: 0.6;
-    z-index: -1;
-}
+    }
+    .btn-secondary{
+        background-color: #e23d40;
+        color: #fff;
+        font-size: 20px;
+        border-radius: 25px;
+        box-shadow: 0px 0px 10px rgb(255, 0, 0);
 
-.container h1 {
-    color: #273057;
-    font-size: 60px;
-    font-weight: 900;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+    }
+    .modal-content {
+        border: 1.5px solid white;
+        box-shadow: 0px 0px 15px rgba(108, 134, 247, 1);
+        border-radius: 25px;
+        position: relative;
+        background: rgba(255, 255, 255, 0.8);
+    }
 
-.container .mb-3 {
-    font-size: 25px;
-    font-weight: bold;
-    color: #273057;
-    padding-bottom: 10px;
-}
+    /* Apply Background Image to Modal */
+    .modal-content::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('{% static "bg.png" %}');
+        background-size: cover;
+        background-position: center;
+        border-radius: 25px;
+        opacity: 0.6;
+        z-index: -1;
+    }
 
-.container .mb-3 .form-control {
-    border: 1.2px solid rgb(255, 255, 255);
-    font-family: 'Courier New', Courier, monospace;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    color: black;
-}
+     .modal-header {
+        display: flex;
+        align-content: center;
+    }
+    .container h5 {
+        color: #273057;
+        font-size: 45px;
+        font-weight: 900;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+    }
+
+    .container .mb-3 {
+        font-size: 25px;
+        font-weight: bold;
+        color: #273057;
+        padding-bottom: 10px;
+    }
+
+    .container .mb-3 .form-control {
+        border: 1.2px solid rgb(255, 255, 255);
+        font-family: 'Courier New', Courier, monospace;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        color: black;
+    }
 
 </style>
 {% endblock %}
 
 {% block body %}
-<div class="container my-5">
-    <img src="{% static 'bg.png' %}" class="bg-image">
-    <h1 class="text-center">Todo-List</h1>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Task Name</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Task-1">
+<div class="container my-3">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center">
+                    <h5 class="modal-title " id="exampleModalLabel">Add Task</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="taskName" class="form-label">Task Name</label>
+                        <input type="text" class="form-control" id="taskName" placeholder="Enter Task Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="taskDescription" class="form-label">Task Description</label>
+                        <textarea class="form-control" id="taskDescription" rows="4" placeholder="Enter Task Description"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="submit" class="btn btn-primary mr-4">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Add the Description</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="This is the Description"></textarea>
+
+    <!-- Button to Trigger Modal -->
+    <div class="d-flex justify-content-center mt-5">
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">+ Add Task</button>
     </div>
 </div>
+
+<div class="containers mx-5 d-flex justify-content-center align-items-center" style="background-color:#bfc8f2; height: 350px;  border-radius: 25px">
+    <h1 class="text-center" style="font-size: 60px;">There is no Task yet</h1>
+ </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-FgcDDbSiBsAOKAN6X3u5vV35VqSlg6tIgJ1DZU5MqWvJrlO/j1AAldzqPiIF" crossorigin="anonymous"></script>
+
+
 
 {% endblock %}
