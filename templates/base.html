@@ -51,9 +51,8 @@
     .navbar .navbar-brand {
         font-size: 50px;
         color: #ffffff;
-        padding-left: 10px;
-        padding-right: 80px;
         margin-right: 80px;
+        padding-right: 20px;
         letter-spacing: 0.1em;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
@@ -67,7 +66,7 @@
         color: #ffffff;
         font-weight: bold;
         font-size: 25px;
-        margin-right: 80px;
+        margin-right: 40px;
 
     }
 
@@ -113,6 +112,26 @@
         margin-top: 20px;
         text-align: center;
     }
+    .alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+    }
+    .alert-dismissible {
+  padding-right: 4rem;
+}
+
+.alert-dismissible .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0.75rem 1.25rem;
+  color: inherit;
+}
+
 </style>
 {% block css %}
 <style>
@@ -127,19 +146,25 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand mx-5" href="/"><b>Justdo-It</b></a>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item justify-content-center">
-                    <a class="nav-link justify-content-center" href="#" style="color: #fff;">Tasks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link justify-content-center" href="#" style="color: #fff;">User</a>
-                </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">User</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Settings</a>
+              </li>
             </ul>
-        </div>
+          </div>
     </nav>
-
-
+    {% if success %}
+    <div id="myAlert" class="alert alert-success alert-dismissible fade show" role="alert" style="width:100%; font-size: 20px;" >
+        <strong>Success!  </strong>    You'r Task was added.
+    </div>
+    {% endif %}
     <!-- navbar end  -->
     {% block body %} {% endblock %}<br>
     <!-- footer  -->
@@ -185,7 +210,13 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
 
-
+    <script>
+        setTimeout(function() {
+            var alert = document.getElementById('myAlert');
+            alert.classList.remove('show');
+            alert.classList.add('hide');
+        }, 3000);
+    </script>
 </body>
 
 </html>
