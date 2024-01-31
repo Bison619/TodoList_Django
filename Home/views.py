@@ -17,3 +17,9 @@ def index(request):
     all_tasks = Task.objects.all()
     context = {'success': success, 'tasks': all_tasks}
     return render(request, "index.html", context)
+
+def user(request):
+    return render(request, "user.html")
+
+def task(request):
+    return render(request, "task.html")
