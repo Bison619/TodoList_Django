@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from Home.models import Task
+
 
 def index(request):
     if request.method == "POST":
@@ -17,6 +18,17 @@ def index(request):
     all_tasks = Task.objects.all()
     context = {'success': success, 'tasks': all_tasks}
     return render(request, "index.html", context)
+
+def del_task(request,task_id):
+    task_id = int(task_id)
+    try:
+        task_sel= Task.objects.get(id=task_id)
+    except Task.DoesNotExist:
+        return redirect('home')
+    task_sel.delete()
+    return redirect('home')
+
+
 
 def user(request):
     return render(request, "user.html")

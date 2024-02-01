@@ -105,7 +105,7 @@
           </div>
           <div class="modal-footer justify-content-center">
             <button type="submit" class="btn btn-primary mr-4">
-              Save changes
+              Save
             </button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">
               Close
@@ -156,8 +156,9 @@
             <input class="form-check-input" type="checkbox" id="flexCheckDefault">
           </div>
           <div>
-            <i class="fas fa-ellipsis-v me-4 fs-5"></i>
-            <i class="fas fa-trash fs-5"></i>
+
+            <a href="update/{{task.id}}" id="{{task.id}}" style="color: #152d45;" > <i class="fas fa-edit me-4 fs-5"></i></a>
+            <a href="delete/{{task.id}}" id="{{task.id}}" style="color: #152d45;"><i class="fas fa-trash fs-5"></i></a>
           </div>
         </td>
 
