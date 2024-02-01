@@ -30,6 +30,18 @@ def del_task(request,task_id):
 
 
 
+def update_task(request, task_id):
+    task = Task.objects.get(pk=task_id)
+
+    if request.method == 'POST':
+
+        task.tasktitle = request.POST['title']
+        task.taskdesc = request.POST['desc']
+        task.save()
+        return redirect('home')
+    return redirect('home')
+
+
 def user(request):
     return render(request, "user.html")
 

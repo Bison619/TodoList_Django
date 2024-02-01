@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.urls import path
 from . import views
+from .views import update_task
 
 urlpatterns = [
 
@@ -24,5 +25,5 @@ urlpatterns = [
     path('user/',views.user, name='user'),
     path('task/',views.task, name='task'),
     path('delete/<int:task_id>', views.del_task),
-    # path('update/<int:task_id>', views.update_task),
+     path('update/<int:task_id>/', update_task, name='update_task'),
 ]

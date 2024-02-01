@@ -157,12 +157,38 @@
           </div>
           <div>
 
-            <a href="update/{{task.id}}" id="{{task.id}}" style="color: #152d45;" > <i class="fas fa-edit me-4 fs-5"></i></a>
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#updateModal{{ task.id }}" style="color: #152d45;"><i class="fas fa-edit me-4 fs-5"></i></button>
             <a href="delete/{{task.id}}" id="{{task.id}}" style="color: #152d45;"><i class="fas fa-trash fs-5"></i></a>
           </div>
         </td>
 
       </tr>
+      <div class="modal fade" id="updateModal{{ task.id }}" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="updateModalLabel">Update Task</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="{% url 'update_task' task.id %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="tasknames" class="form-label">Task Name</label>
+                  <input type="text" class="form-control" id="title" name="title" value="{{ task.tasktitle }}">
+                </div>
+                <div class="mb-3">
+                  <label for="taskDescription" class="form-label">Task Description</label>
+                  <textarea class="form-control" id="desc" name="desc" rows="4">{{ task.taskdesc }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       {% endfor %}
     </tbody>
   </table>
