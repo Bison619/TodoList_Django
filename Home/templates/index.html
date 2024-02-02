@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
-{%block title%} Home {%endblock%}
-{%block css %}
+{% block title %} Home {% endblock %}
+
+{% block css %}
 <style>
   .btn-primary {
     background-color: #1e2c3a;
@@ -11,7 +12,7 @@
     box-shadow: 0px 0px 10px #152d45;
   }
 
-  .btn-primary :hover {
+  .btn-primary:hover {
     background-color: #41607e;
   }
 
@@ -31,7 +32,6 @@
     background: rgba(255, 255, 255, 0.8);
   }
 
-  /* Apply Background Image to Modal */
   .modal-content::before {
     content: "";
     position: absolute;
@@ -73,15 +73,15 @@
     border-radius: 10px;
     color: black;
   }
+
   .form-check-input:checked,
   .form-check-input:not(:checked) {
-
     border: 2px solid black;
   }
 </style>
 {% endblock %}
+
 {% block body %}
-<!-- add task form start  -->
 <form action="/" method="post">
   {% csrf_token %}
   <div class="container my-3">
@@ -104,9 +104,7 @@
             </div>
           </div>
           <div class="modal-footer justify-content-center">
-            <button type="submit" class="btn btn-primary mr-4">
-              Save
-            </button>
+            <button type="submit" class="btn btn-primary mr-4">Save</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">
               Close
             </button>
@@ -116,84 +114,61 @@
     </div>
     <!-- add task form end  -->
 
-    <!-- pop- up Btn for add task  -->
+    <!-- pop-up Btn for add task -->
     <div class="d-flex justify-content-center mt-5">
       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
         + Add Task
       </button>
     </div>
-    <!-- pop- up Btn for add task end  -->
+    <!-- pop-up Btn for add task end -->
   </div>
 </form>
 
-<!-- task section  -->
+<!-- task section -->
 {% if tasks %}
 <div class="containers mx-5 my-3 d-flex flex-column justify-content-center align-items-center"
-  style="background-color: #f7f7f8; border-radius: 25px; overflow-y: auto;">
+  style="background-color: #f7f7f8; border-radius: 25px; overflow-y: auto">
   <table class="table table-borderless"
     style="width: 90%; font-size: 25px; box-shadow: 0px 0px 80px rgb(139, 157, 239); border-radius: 20px; margin-top: 15px;">
     <thead style="font-size: 28px">
       <tr>
         <th colspan="4" class="text-center"
-          style="font-size: 40px; background-color: #5c78f6; color: white; border-radius: 20px; border-bottom-left-radius:0 ; border-bottom-right-radius:0 ;">
-          Your Todo-List</th>
+          style="font-size: 40px; background-color: #5c78f6; color: white; border-radius: 20px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+          Your Todo-List
+        </th>
       </tr>
       <tr>
         <th scope="col" style="width: 10%">No.</th>
         <th scope="col" style="width: 20%">Task</th>
         <th scope="col" style="width: 40%">Details</th>
-        <th scope="col" style="width: 30%" >Action</th>
+        <th scope="col" style="width: 30%">Action</th>
       </tr>
     </thead>
     <tbody>
       {% for task in tasks %}
       <tr>
         <th scope="row">{{ forloop.counter }}</th>
-        <td style="font-weight: bold; text-transform: capitalize; color: #273057;">{{ task.tasktitle }}</td>
+        <td style="font-weight: bold; text-transform: capitalize; color: #273057">
+          {{ task.tasktitle }}
+        </td>
         <td>{{ task.taskdesc }}</td>
         <td class="d-flex align-items-center justify-content-between mx-5">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="flexCheckDefault">
           </div>
           <div>
-
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#updateModal{{ task.id }}" style="color: #152d45;"><i class="fas fa-edit me-4 fs-5"></i></button>
-            <a href="delete/{{task.id}}" id="{{task.id}}" style="color: #152d45;"><i class="fas fa-trash fs-5"></i></a>
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#updateModal{{ task.id }}"
+              style="color: #152d45">
+              <i class="fas fa-edit me-4 fs-5"></i>
+            </button>
+            <a href="delete/{{task.id}}" id="{{task.id}}" style="color: #152d45"><i class="fas fa-trash fs-5"></i></a>
           </div>
         </td>
-
       </tr>
-      <div class="modal fade" id="updateModal{{ task.id }}" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="updateModalLabel">Update Task</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form action="{% url 'update_task' task.id %}" method="post">
-                {% csrf_token %}
-                <div class="mb-3">
-                  <label for="tasknames" class="form-label">Task Name</label>
-                  <input type="text" class="form-control" id="title" name="title" value="{{ task.tasktitle }}">
-                </div>
-                <div class="mb-3">
-                  <label for="taskDescription" class="form-label">Task Description</label>
-                  <textarea class="form-control" id="desc" name="desc" rows="4">{{ task.taskdesc }}</textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Update</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
       {% endfor %}
     </tbody>
   </table>
 </div>
-
 {% else %}
 <div class="containers mx-5 d-flex justify-content-center align-items-center"
   style="background-color: #f2bfbf; height: 350px; border-radius: 25px">
@@ -201,9 +176,40 @@
 </div>
 {% endif %}
 
-<!-- task section end  -->
+<!-- task section end -->
+<!-- Update Task Modals -->
+{% for task in tasks %}
+<div class="modal fade" id="updateModal{{ task.id }}" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateModalLabel">Update Task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'update_task' task.id %}" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="tasknames" class="form-label">Task Name</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ task.tasktitle }}" />
+          </div>
+          <div class="mb-3">
+            <label for="taskDescription" class="form-label">Task Description</label>
+            <textarea class="form-control" id="desc" name="desc" rows="4">{{ task.taskdesc }}</textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
 <script>
-  document.querySelector('form').addEventListener('submit', function () {
+  document.querySelector("form").addEventListener("submit", function () {
     window.location.reload();
   });
 </script>

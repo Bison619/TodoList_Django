@@ -16,8 +16,18 @@ def index(request):
         success = False
 
     all_tasks = Task.objects.all()
-    context = {'success': success, 'tasks': all_tasks}
+
+    context = {'success': success, 'tasks': all_tasks }
     return render(request, "index.html", context)
+
+# def Completedtask(request,task_id):
+#     task = Task.objects.get(pk=task_id)
+#     C_task = Ctask(Ctasktitle= task.tasktitle , Ctaskdesc = task.taskdesc)
+#     C_task.save()
+#     task.delete()
+#     C_task = Ctask.objects.all()
+#     context = {'done' : C_task }
+#     return render(request, 'index.html', context)
 
 def del_task(request,task_id):
     task_id = int(task_id)

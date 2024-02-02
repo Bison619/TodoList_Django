@@ -6,5 +6,6 @@ class Task(models.Model):
     taskdesc = models.CharField( max_length=500)
     time = models.DateTimeField( auto_now_add= True)
 
-    def __str__(self):
-        return self.tasktitle
+# class Ctask(models.Model):
+#     Ctasktitle = models.TextField(max_length=40)
+#     Ctaskdesc = models.CharField( max_length=500)
