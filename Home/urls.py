@@ -26,5 +26,5 @@ urlpatterns = [
     path('task/',views.task, name='task'),
     path('delete/<int:task_id>', views.del_task),
     path('update/<int:task_id>/', update_task, name='update_task'),
-    # path('completed/<int:task_id>/', views.Completedtask, name='Completedtask'),
+     path('task/<int:task_id>/', views.Completedtask, name='Completedtask'),
 ]

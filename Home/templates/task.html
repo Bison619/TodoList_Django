@@ -1,66 +1,42 @@
-<!-- {% extends "base.html" %}
+{% extends "base.html" %}
 {% block title %} Completed Tasks {% endblock %}
 {% block body %}
-
-      <div
-        class="containers mx-5 my-5 d-flex flex-column justify-content-center align-items-center"
-        style="background-color: #b3fdac; border-radius: 25px; overflow-y: auto"
-      >
-      {% if done %}
-      <table
-      class="table"
-      style="
-      width: 90%;
-      font-size: 25px;
-            box-shadow: 0px 0px 80px rgb(139, 157, 239);
-            border-radius: 20px;
-            margin-top: 15px;
-            "
-        >
-          <thead style="font-size: 28px">
-            <tr>
-              <th
-                colspan="4"
-                class="text-center"
-                style="
-                  font-size: 40px;
-                  background-color: #5c78f6;
-                  color: white;
-                  border-radius: 20px;
-                  border-bottom-left-radius: 0;
-                  border-bottom-right-radius: 0;
-                "
-              >
-                Completed Todo-List
-              </th>
-            </tr>
-            <tr>
-              <th scope="col" style="width: 20%">No.</th>
-              <th scope="col" style="width: 35%">Task</th>
-              <th scope="col" style="width: 40%">Details</th>
-              <th scope="col" style="width: 5%">Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {% for item in done %}
-              <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td
-                  style="font-weight: bold; text-transform: capitalize; color: #273057"
-                  >
-                  {{ item.Ctasktitle }}
-                </td>
-                <td>{{ item.Ctaskdesc }}</td>
-                <td class="d-flex align-items-center justify-content-between mx-5">
-                  <i class="fas fa-check me-2 fs-5"></i>
-                  <i class="fas fa-trash fs-5"></i>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-          {% endif %}
-      </div>
-
-{% endblock %} -->
+{% if Ctasks|length > 0 %}
+<div class="containers mx-5 my-3 d-flex flex-column justify-content-center align-items-center"
+  style="background-color: #f7f7f8; border-radius: 25px; overflow-y: auto">
+  <table class="table table-borderless"
+    style="width: 90%; font-size: 25px; box-shadow: 0px 0px 80px rgb(139, 157, 239); border-radius: 20px; margin-top: 15px;">
+    <thead style="font-size: 28px">
+      <tr>
+        <th colspan="4" class="text-center"
+          style="font-size: 40px; background-color: #5c78f6; color: white; border-radius: 20px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+          Completed Tasks
+        </th>
+      </tr>
+      <tr>
+        <th scope="col" style="width: 10%">No.</th>
+        <th scope="col" style="width: 20%">Task</th>
+        <th scope="col" style="width: 40%">Details</th>
+        <th scope="col" style="width: 30%">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in Ctasks %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ task.Ctasktitle }}</td>
+        <td>{{ task.Ctaskdesc }}</td>
+        <td class="d-flex align-items-center justify-content-between mx-5">
+          <div>
+            <a href="delete/{{ task.id }}" id="{{ task.id }}" style="color: #152d45">
+              <i class="fas fa-trash fs-5"></i>
+            </a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+{% endblock %}

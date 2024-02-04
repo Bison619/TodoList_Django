@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from Home.models import Task
+from Home.models import Ctask
 
 
 def index(request):
+    all_tasks = Ctask.objects.all()
+    print(all_tasks)
     if request.method == "POST":
         title = request.POST.get('title')
         desc = request.POST.get('desc')
@@ -16,18 +19,21 @@ def index(request):
         success = False
 
     all_tasks = Task.objects.all()
-
-    context = {'success': success, 'tasks': all_tasks }
+    done_tasks = Ctask.objects.all()
+    context = {'success': success, 'tasks': all_tasks,'Ctasks' : done_tasks }
     return render(request, "index.html", context)
 
-# def Completedtask(request,task_id):
-#     task = Task.objects.get(pk=task_id)
-#     C_task = Ctask(Ctasktitle= task.tasktitle , Ctaskdesc = task.taskdesc)
-#     C_task.save()
-#     task.delete()
-#     C_task = Ctask.objects.all()
-#     context = {'done' : C_task }
-#     return render(request, 'index.html', context)
+def task(request):
+    done_tasks = Ctask.objects.all()
+    context = {'Ctasks' : done_tasks }
+    return render(request, "task.html" , context)
+
+def Completedtask(request,task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    C_task = Ctask(Ctasktitle=task.tasktitle, Ctaskdesc=task.taskdesc)
+    C_task.save()
+    task.delete()
+    return redirect('home')
 
 def del_task(request,task_id):
     task_id = int(task_id)
@@ -37,7 +43,6 @@ def del_task(request,task_id):
         return redirect('home')
     task_sel.delete()
     return redirect('home')
-
 
 
 def update_task(request, task_id):
@@ -55,5 +60,4 @@ def update_task(request, task_id):
 def user(request):
     return render(request, "user.html")
 
-def task(request):
-    return render(request, "task.html")
+
