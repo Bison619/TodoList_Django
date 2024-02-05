@@ -30,6 +30,13 @@
 
 {% load static %}
 <style>
+    :root {
+    --main-color: #aec1d7;
+    --primary-color: rgb(92, 120, 246);
+    --black: rgb(14, 18, 33);
+    --white: #fff;
+    }
+
     body {
         font-family: 'Caveat';
         background-image: url("{% static 'bgg.jpg'%}") ;
@@ -39,7 +46,7 @@
             flex: 1;
         }
     .navbar {
-        background-color: #5c78f6;
+        background-color: rgb(92, 120, 246);
         position: sticky;
         top: 0;
         height: 70px;
@@ -74,75 +81,113 @@
         margin-right: 40px;
 
     }
+    .footer {
 
-    footer {
-        background-color: #333;
-        color: #fff;
-        padding: 55px 0;
-        text-align: center;
-        height: 300px;
-
-
-    }
-
-    .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        margin-right: 80px;
-        margin-left: 80px;
-    }
-
-    .footer-logo img {
-        max-width: 100px;
-        /* Adjust the size of your logo */
-    }
-
-    .footer-links ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .footer-links li {
-        display: inline-block;
-        margin-right: 20px;
-        font-size: 20px;
-    }
-
-    .footer-links a {
-        text-decoration: none;
-        color: #fff;
-    }
-
-    .footer-contact {
-        max-width: 300px;
-    }
-
-    .footer-bottom {
-        margin-top: 20px;
+        background: var(--main-color);
         text-align: center;
     }
+
+    .footer .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+
+    }
+
+    .footer .box-container .box h3 {
+    font-size: 1.9rem;
+    text-transform: capitalize;
+    color: var(--black);
+    padding: 1rem 0;
+    font-weight: 900;
+
+    }
+
+    .footer .box-container .box p {
+    font-size: 1.2rem;
+    line-height: 2;
+    color: var(--black);
+    padding: 1rem 0;
+    }
+
+    .footer .box-container .box .share {
+    margin-top: 1rem;
+    }
+
+    .footer .box-container .box .share a {
+    height: 4.5rem;
+    width: 4.5rem;
+    line-height: 4.5rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    background-color: var(--black);
+    color: var(--white);
+    margin-right: .3rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 900;
+    }
+
+    .footer .box-container .box .share a:hover {
+    background-color: var(--black);
+    }
+
+    .footer .box-container .box .link {
+    font-size: 1.5rem;
+    line-height: 2;
+    color: var(--primary-color);
+    padding: .5rem 0;
+    display: block;
+    text-decoration: underline;
+    }
+
+    .footer .box-container .box .link:hover {
+    color: var(--black);
+    text-decoration: underline;
+    }
+
+    .footer .box-container .box .email {
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    font-size: 1.5rem;
+    border: 0.1rem solid var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 900;
+    }
+
+    .footer .credit {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    color: #444;
+    border-top: 0.1rem solid var(--primary-color);
+    }
+
+    .footer .credit span {
+    color: var(--primary-color);
+    }
+
     .alert {
-  position: relative;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
-    }
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+        }
     .alert-dismissible {
-  padding-right: 4rem;
-}
+    padding-right: 4rem;
+    }
 
-.alert-dismissible .close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  padding: 0.75rem 1.25rem;
-  color: inherit;
-}
+    .alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 0.75rem 1.25rem;
+    color: inherit;
+    }
 
 </style>
 {% block css %}
@@ -161,13 +206,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
+                {%block ahome%}
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
+                {%endblock%}
               </li>
               <li class="nav-item">
+                {%block atask%}
                 <a class="nav-link" href="/task">Tasks</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/user">User</a>
+                {%endblock%}
               </li>
             </ul>
           </div>
@@ -180,36 +226,38 @@
     <!-- navbar end  -->
     {% block body %} {% endblock %}<br>
     <!-- footer  -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <!-- Your logo or site name goes here -->
-                <img src="..." alt="Your Logo">
-            </div>
 
-            <div class="footer-links">
-                <!-- Navigation links or important links -->
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#user">Home</a></li>
-                    <li><a href="#task">Tasks</a></li>
-                </ul>
-            </div>
+<section class="footer">
 
-            <div class="footer-contact">
-                <!-- Contact information -->
-                <p>Contact us: Baruwal20@gmail.com</p>
-                <p>Itahari, Nepal</p>
-                <p>Phone: 9815321156 </p>
-            </div>
-        </div>
+    <div class="box-container">
 
-        <div class="footer-bottom">
-            <!-- Additional information or copyright notice -->
-            <p>&copy; 2024 Your Website. All rights reserved. | Designed by Aman</p>
-        </div>
-    </footer>
-    <!-- footer end  -->
+       <div class="box">
+          <h3> Find me here </h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, voluptatem.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, voluptatem.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, voluptatem.</p>
+          <div class="share">
+             <a href="https://www.instagram.com/aman.baruwal/" class="fab fa-instagram"></a>
+             <a href="https://github.com/Bison619" class="fab fa-github"></a>
+          </div>
+       </div>
+
+       <div class="box">
+          <h3>contact us</h3>
+          <p>9815326181</p>
+          <a href="#" class="link">baruwal20@gmail.com</a>
+       </div>
+
+       <div class="box">
+          <h3>Itahari-8,Sunsari</h3>
+          <p>New Road <br>
+            Pragati Marga <br>
+            Nepal</p>
+       </div>
+
+    </div>
+
+    <div class="credit"> created by <span>Aman Baruwal</span> | all rights reserved! </div>
+
+ </section>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

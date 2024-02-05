@@ -22,9 +22,9 @@ from .views import update_task
 urlpatterns = [
 
     path('',views.index,name='home'),
-    path('user/',views.user, name='user'),
     path('task/',views.task, name='task'),
     path('delete/<int:task_id>', views.del_task),
     path('update/<int:task_id>/', update_task, name='update_task'),
-     path('task/<int:task_id>/', views.Completedtask, name='Completedtask'),
+    path('task/<int:task_id>/', views.Completedtask, name='Completedtask'),
+    path('task/cdelete/<int:task_id>', views.del_ctask),
 ]

@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block title %} Completed Tasks {% endblock %}
+{%block ahome%}
+<a class="nav-link" aria-current="page" href="/">Home</a>
+{%endblock%}
+{%block atask%}
+<a class="nav-link active" href="/task">Tasks</a>
+{%endblock%}
 {% block body %}
 {% if Ctasks|length > 0 %}
 <div class="containers mx-5 my-3 d-flex flex-column justify-content-center align-items-center"
@@ -28,7 +34,7 @@
         <td>{{ task.Ctaskdesc }}</td>
         <td class="d-flex align-items-center justify-content-between mx-5">
           <div>
-            <a href="delete/{{ task.id }}" id="{{ task.id }}" style="color: #152d45">
+            <a href="cdelete/{{ task.id }}" id="{{ task.id }}" style="color: #152d45">
               <i class="fas fa-trash fs-5"></i>
             </a>
           </div>
@@ -37,6 +43,11 @@
       {% endfor %}
     </tbody>
   </table>
+</div>
+{% else %}
+<div class="containers mx-5 my-4 d-flex justify-content-center align-items-center"
+  style="background-color: #f2bfbf; height: 350px; border-radius: 25px">
+  <h1 class="text-center" style="font-size: 60px">There is no Task yet</h1>
 </div>
 {% endif %}
 {% endblock %}

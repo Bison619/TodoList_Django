@@ -44,6 +44,10 @@ def del_task(request,task_id):
     task_sel.delete()
     return redirect('home')
 
+def del_ctask(request,task_id):
+    task = get_object_or_404(Ctask, id=task_id)
+    task.delete()
+    return redirect('task')
 
 def update_task(request, task_id):
     task = Task.objects.get(pk=task_id)
@@ -57,7 +61,5 @@ def update_task(request, task_id):
     return redirect('home')
 
 
-def user(request):
-    return render(request, "user.html")
 
 
